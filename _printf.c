@@ -29,14 +29,11 @@ int _printf(const char *format, ...)
 					count += ptr_f(args);
 				}
 				else
-				{
-				
 					count += _putchar('%'), count += _putchar(*format);
 				format++;
 			}
 		}
 		else
-		{
 			count += _putchar(*format), format++;
 	}
 	va_end(args);
