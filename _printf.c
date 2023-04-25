@@ -44,7 +44,7 @@ int _printf(const char *format, ...)
 /**
  * get_func - the function that call the functions
  * @c: the format to check
- * Return: its depends on the format gvn
+ * Return: its depends on the format vn
  */
 
 int (*get_func(char c))(va_list)
