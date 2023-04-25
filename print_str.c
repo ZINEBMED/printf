@@ -1,15 +1,23 @@
-#include"main.h"
-#include <stdarg.h>
-/**
- * print_string - Prints a character
- * @args: List of arguments
- *
- * Return: Number of characters printed
- */
+#include "main.h"
+
+static int _print_string(const char *str);
+
 int print_string(va_list args)
 {
-	char *str = va_arg(args, char *);
+    return _print_string(va_arg(args, const char *));
+}
 
-	_puts(str);
-	return (_strlen(str));
+static int _print_string(const char *str)
+{
+    int count;
+
+    count = 0;
+
+    while (*str)
+    {
+        _putchar(*str++);
+        count++;
+    }
+
+    return count;
 }

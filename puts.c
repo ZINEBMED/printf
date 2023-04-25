@@ -12,3 +12,4 @@ void _puts(char *str)
 		str++;
 	}
 }
+
