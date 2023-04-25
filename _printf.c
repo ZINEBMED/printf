@@ -21,9 +21,9 @@ int _printf(const char *format, ...)
 	{
 	ptr_f = get_func(*format);
 	if (ptr_f != NULL)
-                {
+	{
 	count += ptr_f(args);
-                }
+	}
 	else
 	count += _putchar('%'), count += _putchar(*format);
 	format++;
@@ -38,8 +38,7 @@ int _printf(const char *format, ...)
 
 int (*get_func(char c))(va_list)
 {
-	fs specificator[] = 
-	{
+	fs specificator[] = {
 		{'c', print_char},
 		{'s', print_string},
 		{'i', print_int},
