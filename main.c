@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 /**
- * main - entry point to the function
+a * main - entry point to the function
  *
  * Return: depends on the case
  */
@@ -26,5 +26,9 @@ int main(void)
 	printf("Len:[%d]\n", len2);
 	_printf("Unknown:[%r]\n");
 	printf("Unknown:[%r]\n");
+	_printf("%s\n", '\0');
+	printf("%s\n", '\0');
+	_printf("%s\n", NULL);
+	printf("%s\n", NULL);
 	return (0);
 }
