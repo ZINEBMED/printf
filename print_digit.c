@@ -1,61 +1,50 @@
 #include "main.h"
-#include <limits.h>
-
-static int _print_int(int value, int width);
 /**
- * print_int - entry function
- * @args: the value
- * Return: argument to print
+ * print_integer - Prints an integer
+ * @args: List of arguments
+ *
+ * Return: Number of characters printed
  */
-int print_int(va_list args)
+int print_integer(va_list args)
 {
-	return (_print_int(va_arg(args, int), 0));
-}
-/**
- * _print_int - entry function
- * @value: the value
- * @width: the width
- * Return: the reuslt of function
- */
-static int _print_int(int value, int width)
-{
-	char buffer[12];
-	int i, count;
-	unsigned int temp_value;
+    int n = va_arg(args, int);
+    unsigned int num;
+    int count = 0;
+    int zeros = 0;
+    int i = 0;
+    int digits[10];
 
-	i = 0;
-	count = 0;
+    if (n == 0)
+        return (_putchar('0'));
 
-	if (value == 0)
-	{
-	_putchar('0');
-	return (1);
-	}
-	if (value < 0)
-	{
-	_putchar('-');
-	temp_value = (unsigned int)(-(value + 1)) + 1;
-	count++;
-	}
-	else
-	{
-	temp_value = (unsigned int)value;
-	}
-	while (temp_value > 0)
-	{
-		buffer[i++] = '0' + (temp_value % 10);
-		temp_value /= 10;
-	}
-	while (width > i)
-	{
-		_putchar('0');
-		width--;
-		count++;
-	}
-	while (i > 0)
-	{
-		_putchar(buffer[--i]);
-		count++;
-	}
-	return (count);
+    if (n < 0)
+    {
+        _putchar('-');
+        count++;
+        num = -n;
+    }
+    else
+        num = n;
+
+    while (num != 0)
+    {
+        digits[i] = num % 10;
+        num /= 10;
+        i++;
+    }
+
+    while (i > 0)
+    {
+        i--;
+        _putchar(digits[i] + '0');
+        count++;
+    }
+
+    while (zeros-- > 0)
+    {
+        _putchar('0');
+        count++;
+    }
+
+    return (count);
 }

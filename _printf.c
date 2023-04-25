@@ -1,50 +1,63 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdarg.h>
-
 /**
- * _printf - produces output according to a format
- * @format: The specified format.
- *
- * Return: The number of characters that were printed
+ * _printf - entry point
+ * @format: le format a traiter
+ * Return: its depends
  */
 int _printf(const char *format, ...)
 {
-	int count = 0;
-		va_list args;
+        va_list args;
+        int count = 0;
+        int (*ptr_f)(va_list);
 
-	va_start(args, format);
+        va_start(args, format);
+        while (*format)
+        {
+                if (*format == '%')
+                {
+                        format++;
+                        if (*format == '\0')
+                                break;
+                        if (*format == '%')
+                                count += _putchar('%'), format++;
+                        else
+                        {
+                                ptr_f = get_func(*format);
+                                if (ptr_f != NULL )
+                                        {
+                                        count += ptr_f(args);
+                                        }
+                                else 
+                                        count += _putchar('%'), count += _putchar(*format);
+                                format++;
+                        }
+                }
+                else
+                        count += _putchar(*format), format++;
+        }
+        va_end(args);
 
-	while (*format != '\0')
+        return (count);
+}
+int (*get_func(char c))(va_list)
+{
+	fs specificator[] = 
+                {
+                {'c', print_char},
+                {'s', print_string},
+                {'i', print_integer},
+                {'d', print_integer},
+                {0, NULL}
+                };
+	int index;
+
+	index = 0;
+	while (specificator[index].format != 0)
 	{
-	if (*format == '%')
-	{
-	format++;
-	switch (*format)
-	{
-	case 'c':
-	putchar(va_arg(args, int));
-	count++;
-	break;
-	case 's':
-	count += printf("%s", va_arg(args, char *));
-	break;
-	case '%':
-	putchar('%');
-	count++;
-	break;
-	default:
-	putchar(*format);
-	count++;
-	break;
+		if (c == specificator[index].format)
+			return (specificator[index].fonction);
+		index++;
 	}
-	}
-	else
-	{
-	putchar(*format);
-	count++;
-	}
-	format++;
-	}
-	va_end(args);
-	return (count);
+        return (NULL);
 }
