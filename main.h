@@ -12,9 +12,16 @@ int print_string(va_list args);
 int _strlen(char *s);
 int print_integer(va_list args);
 int (*get_func(char c))(va_list);
+
+/**
+ * struct format_specificateur - description
+ *
+ * @format: The format.
+ * @fonction: The function associated.
+ */
 typedef struct format_specificateur
 {
-    char format;
-    int (*fonction)(va_list);
+	char format;
+	int (*fonction)(va_list);
 } fs;
 #endif
