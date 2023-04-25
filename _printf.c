@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include <stdarg.h>
+
 /**
  * _printf - produces output according to a format
  * @format: The specified format.
  *
  * Return: The number of characters that were printed
  */
-	int _printf(const char *format, ...)
+int _printf(const char *format, ...)
 {
 	int count = 0;
-	va_list args;
+		va_list args;
 
 	va_start(args, format);
 
@@ -29,6 +30,10 @@
 	break;
 	case '%':
 	putchar('%');
+	count++;
+	break;
+	default:
+	putchar(*format);
 	count++;
 	break;
 	}
