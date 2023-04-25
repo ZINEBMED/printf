@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 /**
-a * main - entry point to the function
+ * main - entry point to the function
  *
  * Return: depends on the case
  */
