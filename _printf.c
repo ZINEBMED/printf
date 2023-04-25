@@ -1,6 +1,11 @@
 #include "main.h"
 #include <stdarg.h>
-
+/**
+ * _printf - entry function
+ * @format: the format to print
+ *
+ * Return: its depends
+ */
 int _printf(const char *format, ...)
 {
 	va_list args;
@@ -21,9 +26,9 @@ int _printf(const char *format, ...)
 	{
 	ptr_f = get_func(*format);
 	if (ptr_f != NULL)
-                {
+	{
 	count += ptr_f(args);
-                }
+	}
 	else
 	count += _putchar('%'), count += _putchar(*format);
 	format++;
@@ -35,11 +40,14 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
+/**
+ * get_func - select the function to call
+ * @c: specifecator
+ *  Return: Number of characters printed
+ */
 int (*get_func(char c))(va_list)
 {
-	fs specificator[] = 
-	{
+	fs specificator[] = {
 		{'c', print_char},
 		{'s', print_string},
 		{'i', print_int},
