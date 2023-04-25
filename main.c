@@ -1,9 +1,11 @@
 #include "main.h"
 #include <stdio.h>
-/** _printf - entry point to the function
- * @format: the format to search
- * return: depends on the case
+/**
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
  */
+
 int main(void)
 {
 	int len;
