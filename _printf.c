@@ -12,6 +12,8 @@ int _printf(const char *format, ...)
 	int (*ptr_f)(va_list);
 
 	va_start(args, format);
+	va_end(args);
+
 	while (*format)
 	{
 	if (*format == '%')
@@ -26,14 +28,12 @@ int _printf(const char *format, ...)
 	ptr_f = get_func(*format);
 	if (ptr_f != NULL)
 	count += ptr_f(args);
-	}
 	else
 	count += _putchar('%'), count += _putchar(*format);
 	format++;
 	}
 	}
 	else
-	{
 	count += _putchar(*format), format++;
 	}
 	va_end(args);
