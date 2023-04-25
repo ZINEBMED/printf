@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_integer - Prints an integer
+ * print_integer - Prints an integer to the stdo
  * @args: List of arguments
  *
  * Return: Number of characters printed
